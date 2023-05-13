@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-table :data="data[0]">
-      <el-table-column prop="market_cap_rank" label="#" sortable width="90" align="center" />
+      <el-table-column prop="market_cap_rank" label="#" sortable width="60" align="center" />
 
       <el-table-column align="center" width="46">
         <template #default="scope">
@@ -53,13 +53,6 @@
 
 <script setup lang="ts">
 const shrtedNum = (num: number) => {
-  // let bubu = {
-  //   '0': '',
-  //   '1': ' тыс.',
-  //   '2': ' млн',
-  //   '3': ' млрд'
-  // }
-
   const bubu = ['', 'тыс', 'млн', 'млрд']
 
   let thousands = Math.floor((('' + num).length - 1) / 3)
