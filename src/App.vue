@@ -1,86 +1,51 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <!-- <template #content>
+      <span class="text-large font-600 mr-3"> Title </span>
+    </template>
+    <div class="mt-4 text-sm font-bold">
+      Your additional content can be added with default slot, You may put as many content as you
+      want here.
+    </div> -->
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-      <el-button type="primary">count is: </el-button>
-      <el-button>asd</el-button>
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
+  <!-- <nav>
+    <RouterLink to="/">Home</RouterLink>
+    <RouterLink to="/about">About</RouterLink>
+    <RouterLink to="/coinList">coinList</RouterLink>
+  </nav> -->
+  <div class="w-6/12 mx-auto py-12">
+    <el-page-header>
+      <!-- <template #breadcrumb>
+        <el-breadcrumb separator="|">
+          <el-breadcrumb-item>
+            <RouterLink to="/">Home</RouterLink>
+          </el-breadcrumb-item>
 
-  <RouterView />
+          <el-breadcrumb-item>
+            <RouterLink to="/coinList">coinList</RouterLink>
+          </el-breadcrumb-item>
+
+          <el-breadcrumb-item>
+            <RouterLink to="/about">About</RouterLink>
+          </el-breadcrumb-item>
+          <el-breadcrumb-item>
+            <RouterLink to="/coin/1">BitcoinInfo</RouterLink>
+          </el-breadcrumb-item>
+          <el-breadcrumb-item>
+            <RouterLink to="/about">123123</RouterLink>
+          </el-breadcrumb-item>
+        </el-breadcrumb>
+      </template> -->
+      <template #content>
+        <span class="text-large font-600 mr-3"> Title </span>
+      </template>
+    </el-page-header>
+
+    <RouterView />
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
-</style>
+<style scoped></style>
