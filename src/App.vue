@@ -1,5 +1,13 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
+
+import { getCoinList } from '@/requests/coingecko'
+
+getCoinList('usd', 1).then(({ data }) => {
+  // После запроса нам приходит объект из которого мы достаем поле data
+  console.log(data)
+  // И присваиваем его к нашим тудушкам
+})
 </script>
 
 <template>

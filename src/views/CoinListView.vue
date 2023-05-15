@@ -1,12 +1,22 @@
 <template>
-  <!-- <div style="height: 95%"><CoinListTable /></div>
-  <div style="height: 5%"><el-pagination layout="prev, pager, next" :total="50" /></div> -->
-  <CoinListTable></CoinListTable>
+  <CoinListTable :data="dataTable" />
   <el-pagination layout="prev, pager, next" :total="50" />
 </template>
 
 <script setup lang="ts">
-import CoinListTable from '../components/CoinListTable.vue'
+import { ref } from 'vue'
+
+import CoinListTable from '@/components/CoinListTable.vue'
+
+import type { ICoin } from '@/interfaces'
+
+import { getCoinList } from '@/requests/coingecko'
+
+const dataTable = ref<ICoin[]>([])
+
+getCoinList('usd', 1).then(({ data }) => {
+  dataTable.value = data
+})
 </script>
 
 <style scoped></style>
