@@ -3,17 +3,18 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <el-container>
-    <el-aside width="200px">
-      <el-menu router>
+  <el-container style="height: 100hv">
+    <el-aside style="height: 100hv">
+      <el-menu router style="height: 100%">
         <el-menu-item index="/">Home</el-menu-item>
-
-        <el-menu-item index="/coinList"> coins </el-menu-item>
+        <el-menu-item index="/coinList">coins</el-menu-item>
       </el-menu>
     </el-aside>
-    <el-container>
-      <el-header>Header</el-header>
-      <el-main><RouterView /></el-main>
+    <el-container style="height: 100vh">
+      <el-header height="100px"> head </el-header>
+      <el-main style="padding: 0; width: 100%">
+        <RouterView />
+      </el-main>
     </el-container>
   </el-container>
 </template>

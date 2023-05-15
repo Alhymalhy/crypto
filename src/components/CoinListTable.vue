@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-table :data="data[0]">
+    <el-table :data="data[0]" height="900px">
       <el-table-column prop="market_cap_rank" label="#" sortable width="60" align="center" />
 
       <el-table-column align="center" width="46">
@@ -14,7 +14,11 @@
       <el-table-column label="Название" sortable>
         <template #default="scope">
           <div style="display: flex; align-items: center">
-            <RouterLink :to="'/coin/:' + scope.row.id">{{ scope.row.name }}</RouterLink>
+            <RouterLink :to="'/coin/:' + scope.row.id">
+              <el-link type="info">
+                {{ scope.row.name }}
+              </el-link>
+            </RouterLink>
           </div>
         </template>
       </el-table-column>
@@ -32,6 +36,12 @@
       <el-table-column label="Рыночный капитал" sortable align="right">
         <template #default="scope">
           <p>{{ shrtedNum(scope.row.market_cap) }}</p>
+        </template>
+      </el-table-column>
+
+      <el-table-column label="Объем (24ч.)" sortable align="right">
+        <template #default="scope">
+          <p>{{ shrtedNum(scope.row.total_volume) }}</p>
         </template>
       </el-table-column>
 
