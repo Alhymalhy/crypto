@@ -15,3 +15,11 @@ export const getCoinList = (vsCurr: string, page: number) =>
       page: page
     }
   })
+
+export const getCoinInfo = (id: string | string[]) =>
+  cgApiInst({
+    url: `/${id}`,
+    params: {
+      locale: 'ru'
+    }
+  })

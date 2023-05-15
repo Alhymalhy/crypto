@@ -14,7 +14,7 @@
       <el-table-column label="Название" sortable>
         <template #default="scope">
           <div style="display: flex; align-items: center">
-            <RouterLink :to="'/coin/:' + scope.row.id">
+            <RouterLink :to="'/coin/' + scope.row.id">
               <el-link type="info">
                 {{ scope.row.name }}
               </el-link>
@@ -64,7 +64,7 @@
 <script setup lang="ts">
 import { shrtedNum } from '@/utils'
 
-import type { ICoin } from '@/interfaces'
+import type { ICoin } from '@/interfaces/Coin'
 
 interface Props {
   data: ICoin[]

@@ -8,7 +8,7 @@ import { ref } from 'vue'
 
 import CoinListTable from '@/components/CoinListTable.vue'
 
-import type { ICoin } from '@/interfaces'
+import type { ICoin } from '@/interfaces/Coin'
 
 import { getCoinList } from '@/requests/coingecko'
 
