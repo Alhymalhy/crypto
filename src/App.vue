@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import { Calendar, Search } from '@element-plus/icons-vue'
+import { Search } from '@element-plus/icons-vue'
 import { ref } from 'vue'
 
 const input = ref('')
@@ -25,7 +25,7 @@ const input = ref('')
           size="large"
         ></el-input>
       </el-header>
-      <el-main style="padding: 0; width: 100%">
+      <el-main style="padding: 0">
         <RouterView />
       </el-main>
     </el-container>
