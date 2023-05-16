@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
+import { Calendar, Search } from '@element-plus/icons-vue'
+import { ref } from 'vue'
+
+const input = ref('')
 </script>
 
 <template>
@@ -11,7 +15,16 @@ import { RouterView } from 'vue-router'
       </el-menu>
     </el-aside>
     <el-container style="height: 100vh">
-      <el-header height="100px"> head </el-header>
+      <el-header height="100px">
+        <el-input
+          class="w-50 m-2"
+          v-model="input"
+          placeholder=""
+          clearable
+          :prefix-icon="Search"
+          size="large"
+        ></el-input>
+      </el-header>
       <el-main style="padding: 0; width: 100%">
         <RouterView />
       </el-main>
