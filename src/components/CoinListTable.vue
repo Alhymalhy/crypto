@@ -28,7 +28,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column prop="symbol" label="Тикер" sortable width="100">
+      <el-table-column prop="symbol" label="Тикер" sortable>
         <template #default="scope">
           <div style="display: flex; align-items: center">
             <p>{{ scope.row.symbol.toUpperCase() }}</p>

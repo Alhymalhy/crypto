@@ -1,16 +1,6 @@
 <template>
-  <!-- <el-input
-    class="w-50 m-2"
-    v-model="input"
-    placeholder=""
-    clearable
-    :prefix-icon="Search"
-    size="large"
-  /> -->
-
   <el-select
     class="w-full"
-    v-model="value"
     clerable
     filterable
     placeholder="Поиск..."
@@ -20,28 +10,27 @@
     :loading="loading"
   >
     <el-option v-for="item in options" :key="item.id">
-      <div style="display: flex; align-items: center">
-        <RouterLink :to="'/coin/' + item.id">
-          <el-link type="info">
+      <RouterLink :to="'/coin/' + item.id">
+        <div style="display: flex; align-items: center; width: 100%">
+          <el-image style="width: 20px; height: 20px" :src="item.large" />
+          <div class="ml-5 grow">
             {{ item.name }}
-          </el-link>
-        </RouterLink>
-      </div>
+          </div>
+          <div class="text-right">#{{ item.market_cap_rank }}</div>
+        </div>
+      </RouterLink>
     </el-option>
   </el-select>
 </template>
 
 <script setup lang="ts">
-import { Search } from '@element-plus/icons-vue'
-const input = ref('')
-import { searchByQuery } from '@/requests/coingecko'
-
-const options = ref([])
-const loading = ref(false)
-
-const value = ref('')
-
 import { useDebounceFn } from '@vueuse/core'
+
+import { searchByQuery } from '@/requests/coingecko'
+import type { ISearchedCoin } from '@/interfaces/SearchedCoin'
+
+const options = ref<ISearchedCoin[]>([])
+const loading = ref(false)
 
 const dbRemoteMethod = useDebounceFn((query) => {
   console.log(query)

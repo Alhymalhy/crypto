@@ -1,7 +1,7 @@
 <template>
   <div class="h-full flex flex-col">
     <div class="flex items-center p-5 gap-5 grow">
-      <CurrencyInput class="m-0" />
+      <SearchInput class="m-0" />
       <CategoriesDropDown :categories="categories" :category="category" @handle="categoryClick" />
     </div>
     <CoinListTable :dataTable="dataTable" @load="load" />
@@ -46,22 +46,6 @@ const load = () => {
     })
   }
 }
-
-// const dataTable = ref<ICoin[]>([])
-// const currPage = ref<number>(0)
-// const totalPage = ref<number>(10)
-// const disableScroll = ref<boolean>(false)
-// const load = () => {
-//   currPage.value++
-
-//   if (currPage.value <= totalPage.value) {
-//     getCoinList('usd', currPage.value).then(({ data }) => {
-//       dataTable.value = dataTable.value.concat(data)
-//     })
-//   } else if (currPage.value === totalPage.value) {
-//     disableScroll.value = true
-//   }
-// }
 </script>
 
 <style scoped></style>
