@@ -1,5 +1,5 @@
 {
-  "files": [],
+  "files": ["auto-imports.d.ts"],
   "references": [
     {
       "path": "./tsconfig.node.json"
@@ -8,7 +8,39 @@
       "path": "./tsconfig.app.json"
     }
   ],
+
   "compilerOptions": {
-    "types": ["element-plus/global"]
+    "baseUrl": ".",
+    "module": "ESNext",
+    "target": "ESNext",
+    "lib": ["DOM", "ESNext"],
+    "strict": true,
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "noUnusedLocals": true,
+    "strictNullChecks": true,
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": [
+      "vitest",
+      "vite/client",
+      "vue/ref-macros",
+      "vite-plugin-pages/client",
+      "vite-plugin-vue-component-preview/client",
+      "vite-plugin-vue-layouts/client",
+      "vite-plugin-pwa/client",
+      "unplugin-vue-macros/macros-global",
+      "element-plus/global"
+    ],
+    "paths": {
+      "~/*": ["src/*"]
+    }
+  },
+  "vueCompilerOptions": {
+    "plugins": ["@vue-macros/volar/define-models", "@vue-macros/volar/define-slots"]
   }
 }

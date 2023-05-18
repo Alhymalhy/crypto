@@ -1,10 +1,10 @@
 <template>
   <div>
     <el-table
-      v-el-table-infinite-scroll="load"
+      v-el-table-infinite-scroll="() => $emit('load')"
       :infinite-scroll-disabled="disableScroll"
       :data="dataTable"
-      height="980"
+      height="1010"
     >
       <el-table-column prop="market_cap_rank" label="#" sortable width="60" align="center" />
 
@@ -67,29 +67,23 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import { default as vElTableInfiniteScroll } from 'el-table-infinite-scroll'
 
 import { shrtedNum } from '@/utils'
-import { getCoinList } from '@/requests/coingecko'
+
 import type { ICoin } from '@/interfaces/Coin'
 
-const dataTable = ref<ICoin[]>([])
-const currPage = ref<number>(0)
-const totalPage = ref<number>(10)
 const disableScroll = ref<boolean>(false)
 
-const load = () => {
-  currPage.value++
-
-  if (currPage.value <= totalPage.value) {
-    getCoinList('usd', currPage.value).then(({ data }) => {
-      dataTable.value = dataTable.value.concat(data)
-    })
-  } else if (currPage.value === totalPage.value) {
-    disableScroll.value = true
-  }
+interface Props {
+  dataTable: ICoin[]
 }
+
+defineProps<Props>()
+
+defineEmits<{
+  (e: 'load'): void
+}>()
 </script>
 
 <style scoped>
