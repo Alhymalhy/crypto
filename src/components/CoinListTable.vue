@@ -8,7 +8,7 @@
     >
       <el-table-column prop="market_cap_rank" label="#" sortable width="60" align="center" />
 
-      <el-table-column align="center" width="46">
+      <el-table-column align="center" width="60">
         <template #default="scope">
           <div style="display: flex; align-items: center">
             <el-image style="width: 20px; height: 20px" :src="scope.row.image" />
