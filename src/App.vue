@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-</script>
-
 <template>
   <el-container style="height: 100hv">
     <el-aside style="height: 100hv">
@@ -11,12 +7,15 @@ import { RouterLink, RouterView } from 'vue-router'
       </el-menu>
     </el-aside>
     <el-container style="height: 100vh">
-      <el-header height="100px"> head </el-header>
-      <el-main style="padding: 0; width: 100%">
+      <el-main style="padding: 0; height: 100hv">
         <RouterView />
       </el-main>
     </el-container>
   </el-container>
 </template>
+
+<script setup lang="ts">
+import { RouterView } from 'vue-router'
+</script>
 
 <style scoped></style>
