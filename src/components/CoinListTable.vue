@@ -1,10 +1,10 @@
 <template>
   <div>
     <el-table
-      v-el-table-infinite-scroll="() => $emit('load')"
+      v-el-table-infinite-scroll="() => coinStore.load()"
       :infinite-scroll-disabled="disableScroll"
-      :data="dataTable"
-      height="1010"
+      :data="coinStore.dataTable"
+      height="900"
     >
       <el-table-column prop="market_cap_rank" label="#" sortable width="60" align="center" />
 
@@ -70,20 +70,11 @@
 import { default as vElTableInfiniteScroll } from 'el-table-infinite-scroll'
 
 import { shrtedNum } from '@/utils'
-
-import type { ICoin } from '@/interfaces/Coin'
+import { useCoinStore } from '@/stores/coinStore'
 
 const disableScroll = ref<boolean>(false)
 
-interface Props {
-  dataTable: ICoin[]
-}
-
-defineProps<Props>()
-
-defineEmits<{
-  (e: 'load'): void
-}>()
+const coinStore = useCoinStore()
 </script>
 
 <style scoped>

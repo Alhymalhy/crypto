@@ -1,15 +1,15 @@
 <template>
   <el-dropdown trigger="click" size="large">
     <el-button size="large">
-      {{ category?.name }}<el-icon class="el-icon--right"><arrow-down /></el-icon>
+      {{ categoryStore.category?.name }}<el-icon class="el-icon--right"><arrow-down /></el-icon>
     </el-button>
     <template #dropdown>
       <el-dropdown-menu>
         <el-scrollbar height="400px">
           <el-dropdown-item
-            v-for="e in categories"
+            v-for="e in categoryStore.categories"
             :key="e.category_id"
-            @click="$emit('handle', e)"
+            @click="categoryStore.categoryClick(e)"
           >
             {{ e.name }}
           </el-dropdown-item>
@@ -21,18 +21,10 @@
 
 <script setup lang="ts">
 import { ArrowDown } from '@element-plus/icons-vue'
-import type { ICategory } from '@/interfaces/Category'
 
-interface Props {
-  category: ICategory
-  categories: ICategory[]
-}
+const categoryStore = useCategoryStore()
 
-defineProps<Props>()
-
-defineEmits<{
-  (e: 'handle', cat: ICategory): void
-}>()
+categoryStore.fetchCategories()
 </script>
 
 <style scoped></style>

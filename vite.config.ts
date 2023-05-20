@@ -48,9 +48,17 @@ export default defineConfig({
   plugins: [
     vue(),
     AutoImport({
-      imports: ['vue', 'vue-router'],
+      imports: [
+        'vue',
+        'vue-router',
+        'pinia',
+        '@vueuse/core',
+        {
+          axios: [['default', 'axios']]
+        }
+      ],
       dts: 'src/auto-imports.d.ts',
-      dirs: ['src/stores'],
+      dirs: ['src/services/**', 'src/stores/**'],
       vueTemplate: true
     }),
     Components({

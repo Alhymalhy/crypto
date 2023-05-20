@@ -32,17 +32,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useRoute } from 'vue-router'
-
-import { getCoinInfo } from '@/requests/coingecko'
+// import { useRoute } from 'vue-router'
 
 import type { ICoinInfo } from '@/interfaces/CoinInfo'
 
 const route = useRoute()
 const coinInfo = ref<ICoinInfo>()
 
-getCoinInfo(route.params.id).then(({ data }) => {
+CGApi.getCoinInfo(route.params.id).then(({ data }) => {
   coinInfo.value = data
 })
 </script>

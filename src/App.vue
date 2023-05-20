@@ -1,5 +1,5 @@
 <template>
-  <el-container style="height: 100hv">
+  <el-container style="height: 100hv; overflow: hidden">
     <el-aside style="height: 100hv">
       <el-menu router style="height: 100%">
         <el-menu-item index="/">Home</el-menu-item>
