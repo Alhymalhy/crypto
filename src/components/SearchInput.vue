@@ -6,10 +6,10 @@
     placeholder="Поиск..."
     remote
     size="large"
-    :remote-method="dbRemoteMethod"
-    :loading="loading"
+    :remote-method="searchStore.dbRemoteMethod"
+    :loading="searchStore.loading"
   >
-    <el-option v-for="item in options" :key="item.id">
+    <el-option v-for="item in searchStore.options" :key="item.id">
       <RouterLink :to="'/coin/' + item.id">
         <div style="display: flex; align-items: center; width: 100%">
           <el-image style="width: 20px; height: 20px" :src="item.large" />
@@ -24,29 +24,8 @@
 </template>
 
 <script setup lang="ts">
-import { useDebounceFn } from '@vueuse/core'
-
-import { searchByQuery } from '@/requests/coingecko'
-import type { ISearchedCoin } from '@/interfaces/SearchedCoin'
-
-const options = ref<ISearchedCoin[]>([])
-const loading = ref(false)
-
-const dbRemoteMethod = useDebounceFn((query) => {
-  console.log(query)
-  if (query) {
-    loading.value = true
-    searchByQuery(query)
-      .then(({ data }) => {
-        options.value = data.coins
-      })
-      .then(() => {
-        loading.value = false
-      })
-  } else {
-    options.value = []
-  }
-}, 1000)
+import { useSearchStore } from '@/stores/searchStore'
+const searchStore = useSearchStore()
 </script>
 
 <style scoped></style>
