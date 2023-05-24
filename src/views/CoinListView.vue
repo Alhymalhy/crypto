@@ -1,10 +1,12 @@
 <template>
-  <div class="h-full flex flex-col">
-    <div class="flex items-center p-5 gap-5 grow">
+  <div class="" style="height: calc(100vh - 64px)">
+    <div class="flex flex-row h-[60px] items-center">
       <SearchInput class="m-0" />
       <CategoriesDropDown />
     </div>
-    <CoinListTable />
+    <div class="" style="height: calc(100vh - 124px)">
+      <CoinListTable />
+    </div>
   </div>
 </template>
 

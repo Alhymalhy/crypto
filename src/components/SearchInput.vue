@@ -5,7 +5,6 @@
     filterable
     placeholder="Поиск..."
     remote
-    size="large"
     :remote-method="searchStore.dbRemoteMethod"
     :loading="searchStore.loading"
   >
