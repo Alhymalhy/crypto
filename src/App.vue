@@ -1,11 +1,7 @@
 <template>
-  <div class="h-screen">
-    <div class="h-[64px] pt-3">
-      <div class="border-y h-full">
-        <div class="w-11/12 max-w-7xl mx-auto">header</div>
-      </div>
-    </div>
-    <div class="w-11/12 max-w-7xl mx-auto" style="height: calc(100vh - 64px)">
+  <div class="mx-auto h-screen w-11/12 max-w-7xl">
+    <NavigationHeader />
+    <div style="height: calc(100vh - 80px)" id="view">
       <RouterView />
     </div>
   </div>

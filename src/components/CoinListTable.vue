@@ -4,11 +4,11 @@
     v-el-table-infinite-scroll="() => coinStore.load()"
     :infinite-scroll-disabled="disableScroll"
     :data="coinStore.dataTable"
-    style="height: 100%"
+    style="height: 100%; border-radius: 4px"
     table-layout="auto"
     size="small"
   >
-    <el-table-column prop="market_cap_rank" label="#" width="40" align="right" />
+    <el-table-column prop="market_cap_rank" label="#" width="50" align="right" />
 
     <el-table-column align="center" width="36">
       <template #default="scope">
@@ -60,7 +60,7 @@
             hig: scope.row.price_change_percentage_24h > 0
           }"
         >
-          {{ scope.row.price_change_percentage_24h.toFixed(2) + '%' }}
+          {{ scope.row.price_change_percentage_24h + '%' }}
         </p>
       </template>
     </el-table-column>
