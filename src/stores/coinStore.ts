@@ -5,9 +5,10 @@ export const useCoinStore = defineStore('coin', () => {
 
   const dataTable = ref<ICoin[]>([])
   const currPage = ref<number>(0)
+  const VSCurr = ref<string>('usd')
 
   const fetchCoins = (categ?: ICategory) => {
-    CGApi.getCoinList('usd', currPage.value, categ?.category_id).then(({ data }) => {
+    CGApi.getCoinList(VSCurr.value, currPage.value, categ?.category_id).then(({ data }) => {
       dataTable.value = [...dataTable.value, ...data]
     })
   }
@@ -16,5 +17,11 @@ export const useCoinStore = defineStore('coin', () => {
     currPage.value++
     categoryStroe.category.category_id == 'all' ? fetchCoins() : fetchCoins(categoryStroe.category)
   }
-  return { dataTable, load, currPage }
+
+  watch(VSCurr, () => {
+    dataTable.value = []
+    currPage.value = 0
+    load()
+  })
+  return { dataTable, load, currPage, VSCurr }
 })

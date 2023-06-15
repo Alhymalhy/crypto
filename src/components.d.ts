@@ -46,5 +46,6 @@ declare module '@vue/runtime-core' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SearchInput: typeof import('./components/SearchInput.vue')['default']
+    VSCurrSelect: typeof import('./components/VSCurrSelect.vue')['default']
   }
 }
