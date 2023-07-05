@@ -1,4 +1,5 @@
 import type { ICategory, ICoin, ICoinInfo, ISearchedCoin } from '@/interfaces'
+import type { ITrendCoin, Item } from '@/interfaces/TrendCoin'
 
 const cgApiInst = axios.create({
   baseURL: 'https://api.coingecko.com/api/v3'
@@ -15,6 +16,25 @@ export const CGApi = {
       params: {
         query: q
       }
+    })
+  },
+
+  getTrendingCoins() {
+    return cgApiInst<ITrendCoin[]>({
+      url: `/search/trending`,
+      transformResponse: [
+        (data) => {
+          return JSON.parse(data).coins.map((e: Item) => {
+            return e.item
+          })
+        }
+      ]
+    })
+  },
+
+  getVsCurrList() {
+    return cgApiInst<string[]>({
+      url: '/simple/supported_vs_currencies'
     })
   },
 

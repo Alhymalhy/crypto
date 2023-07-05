@@ -1,6 +1,6 @@
 <template>
-  <el-dropdown trigger="click" size="large">
-    <el-button size="large">
+  <el-dropdown trigger="click">
+    <el-button>
       {{ categoryStore.category?.name }}<el-icon class="el-icon--right"><arrow-down /></el-icon>
     </el-button>
     <template #dropdown>

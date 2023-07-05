@@ -1,17 +1,10 @@
 <template>
-  <el-container style="height: 100hv; overflow: hidden">
-    <el-aside style="height: 100hv">
-      <el-menu router style="height: 100%">
-        <el-menu-item index="/">Home</el-menu-item>
-        <el-menu-item index="/coinList">coins</el-menu-item>
-      </el-menu>
-    </el-aside>
-    <el-container style="height: 100vh">
-      <el-main style="padding: 0; height: 100hv">
-        <RouterView />
-      </el-main>
-    </el-container>
-  </el-container>
+  <div class="mx-auto h-screen w-11/12 max-w-7xl">
+    <NavigationHeader />
+    <div style="height: calc(100vh - 80px)" id="view">
+      <RouterView />
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
