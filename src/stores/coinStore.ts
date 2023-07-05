@@ -7,10 +7,9 @@ export const useCoinStore = defineStore('coin', () => {
   const currPage = ref<number>(0)
   const VSCurr = ref<string>('usd')
 
-  const fetchCoins = (categ?: ICategory) => {
-    CGApi.getCoinList(VSCurr.value, currPage.value, categ?.category_id).then(({ data }) => {
-      dataTable.value = [...dataTable.value, ...data]
-    })
+  const fetchCoins = async (categ?: ICategory) => {
+    const { data } = await getCoinList(VSCurr.value, currPage.value, categ?.category_id)
+    dataTable.value = [...dataTable.value, ...data]
   }
 
   const load = () => {

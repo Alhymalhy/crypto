@@ -7,7 +7,7 @@
 <script setup lang="ts">
 const options = ref<string[]>([])
 
-CGApi.getVsCurrList().then(({ data }) => {
+getVsCurrList().then(({ data }) => {
   options.value = data
 })
 

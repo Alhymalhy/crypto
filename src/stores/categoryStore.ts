@@ -7,10 +7,10 @@ export const useCategoryStore = defineStore('category', () => {
   const category = ref<ICategory>(AllCategory)
   const categories = ref<ICategory[]>([])
 
-  const fetchCategories = () =>
-    CGApi.getCategories().then(({ data }) => {
-      categories.value = [AllCategory, ...data]
-    })
+  const fetchCategories = async () => {
+    const { data } = await getCategories()
+    categories.value = [AllCategory, ...data]
+  }
 
   const categoryClick = (categ: ICategory) => {
     category.value = categ

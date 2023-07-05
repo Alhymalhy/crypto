@@ -7,27 +7,21 @@ export const useSearchStore = defineStore('search', () => {
   const loading = ref(false)
   const trendsShow = ref(true)
 
-  const dbRemoteMethod = useDebounceFn((query) => {
+  const dbRemoteMethod = useDebounceFn(async (query) => {
     if (query) {
       loading.value = true
-      CGApi.getCoinsByQuery(query)
-        .then(({ data }) => {
-          options.value = data.coins
-        })
-        .then(() => {
-          loading.value = false
-        })
-      trendsShow.value = false
+      const { data } = await getCoinsByQuery(query)
+      options.value = data.coins
+      trendsShow.value = loading.value = false
     } else {
       options.value = []
       trendsShow.value = true
     }
   }, 1000)
 
-  const fetchTrendCoins = () => {
-    CGApi.getTrendingCoins().then(({ data }) => {
-      trends.value = data
-    })
+  const fetchTrendCoins = async () => {
+    const { data } = await getTrendingCoins()
+    trends.value = data
   }
 
   fetchTrendCoins()

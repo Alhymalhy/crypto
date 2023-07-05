@@ -16,7 +16,7 @@
           <p class="text-2xl">1 {{ coinInfo?.symbol }} =</p>
           <p class="text-6xl">${{ coinInfo?.market_data.current_price.usd }}</p>
         </div>
-        <div class="flex align-middle self-center"></div>
+        <div class="flex self-center align-middle"></div>
       </div>
     </el-col>
   </el-row>
@@ -39,7 +39,7 @@ import type { ICoinInfo } from '@/interfaces/CoinInfo'
 const route = useRoute()
 const coinInfo = ref<ICoinInfo>()
 
-CGApi.getCoinInfo(route.params.id).then(({ data }) => {
+getCoinInfo(route.params.id).then(({ data }) => {
   coinInfo.value = data
 })
 </script>
