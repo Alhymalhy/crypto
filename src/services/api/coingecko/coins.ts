@@ -1,32 +1,22 @@
 import type { ICategory, ICoin, ICoinInfo } from '@/interfaces'
+import apiInstance from './base'
+import type { AxiosPromise } from 'axios'
 
-const coinsInst = axios.create({
-  baseURL: 'https://api.coingecko.com/api/v3/coins'
-})
+const BASE_URL = '/coins'
 
-export const getCoinList = (vsCurr: string, page: number, category?: string) =>
-  coinsInst<ICoin[]>({
-    url: `/markets`,
-    method: 'GET',
-    params: {
-      vs_currency: vsCurr,
-      locale: 'ru',
-      page: page,
-      category: category
-    }
+export interface getCoinListParams {
+  vs_currency: string
+  page: number
+  category?: string
+}
+
+export const getCoinList = (params: getCoinListParams): AxiosPromise<ICoin[]> =>
+  apiInstance.get(`${BASE_URL}/markets`, {
+    params
   })
 
-export const getCoinInfo = (id: string | string[]) =>
-  coinsInst<ICoinInfo>({
-    url: `/${id}`,
-    method: 'GET',
-    params: {
-      locale: 'ru'
-    }
-  })
+export const getCoinInfo = (id: string): AxiosPromise<ICoinInfo> =>
+  apiInstance.get(`${BASE_URL}/${id}`)
 
-export const getCategories = () =>
-  coinsInst<ICategory[]>({
-    url: `/categories/list`,
-    method: 'GET'
-  })
+export const getCategories = (): AxiosPromise<ICategory[]> =>
+  apiInstance.get(`${BASE_URL}/categories/list`)

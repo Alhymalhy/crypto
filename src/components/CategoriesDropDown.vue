@@ -7,11 +7,11 @@
       <el-dropdown-menu>
         <el-scrollbar height="400px">
           <el-dropdown-item
-            v-for="e in categoryStore.categories"
-            :key="e.category_id"
-            @click="categoryStore.categoryClick(e)"
+            v-for="category in data"
+            :key="category.category_id"
+            @click="categoryStore.categoryClick(category)"
           >
-            {{ e.name }}
+            {{ category.name }}
           </el-dropdown-item>
         </el-scrollbar>
       </el-dropdown-menu>
@@ -21,10 +21,19 @@
 
 <script setup lang="ts">
 import { ArrowDown } from '@element-plus/icons-vue'
+import { coingeckoApi } from '@/services/api'
+
+import { useQuery } from '@tanstack/vue-query'
 
 const categoryStore = useCategoryStore()
 
-categoryStore.fetchCategories()
+const { data } = useQuery({
+  queryKey: ['category'],
+  queryFn: async () => {
+    const { data } = await coingeckoApi.coins.getCategories()
+    return [{ name: 'Все', category_id: 'all' }, ...data]
+  }
+})
 </script>
 
 <style scoped></style>

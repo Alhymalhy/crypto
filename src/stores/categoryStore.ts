@@ -7,11 +7,6 @@ export const useCategoryStore = defineStore('category', () => {
   const category = ref<ICategory>(AllCategory)
   const categories = ref<ICategory[]>([])
 
-  const fetchCategories = async () => {
-    const { data } = await getCategories()
-    categories.value = [AllCategory, ...data]
-  }
-
   const categoryClick = (categ: ICategory) => {
     category.value = categ
   }
@@ -22,5 +17,5 @@ export const useCategoryStore = defineStore('category', () => {
     coinStore.load()
   })
 
-  return { category, categories, categoryClick, fetchCategories }
+  return { category, categories, categoryClick }
 })

@@ -8,7 +8,11 @@ export const useCoinStore = defineStore('coin', () => {
   const VSCurr = ref<string>('usd')
 
   const fetchCoins = async (categ?: ICategory) => {
-    const { data } = await getCoinList(VSCurr.value, currPage.value, categ?.category_id)
+    const { data } = await getCoinList({
+      vs_currency: VSCurr.value,
+      page: currPage.value,
+      category: categ?.category_id
+    })
     dataTable.value = [...dataTable.value, ...data]
   }
 
