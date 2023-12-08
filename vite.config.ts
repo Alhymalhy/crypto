@@ -58,7 +58,7 @@ export default defineConfig({
           axios: [['default', 'axios']]
         }
       ],
-      dts: 'src/auto-imports.d.ts',
+      dts: './auto-imports.d.ts',
       dirs: ['src/services/**', 'src/stores/**'],
       vueTemplate: true
     }),
